@@ -23,32 +23,48 @@ void AAuraPlayerController::CursorTrace()
     GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
     if (!CursorHit.bBlockingHit) return;
 
-    LastActor = ThisActor;
-    ThisActor = Cast<IEnemyInterface>(CursorHit.GetActor());
+    AActor* HitActor = CursorHit.GetActor();
 
-    if (!LastActor)
+    // Store the previous value
+    LastActor = ThisActor;
+
+    // Clear the new value first
+    ThisActor.SetObject(nullptr);
+    ThisActor.SetInterface(nullptr);
+
+    // Assign only if it implements the interface
+    if (HitActor && HitActor->Implements<UEnemyInterface>())
     {
-        if (ThisActor)
+        ThisActor.SetObject(HitActor);
+        ThisActor.SetInterface(Cast<IEnemyInterface>(HitActor));
+    }
+
+    // -----------------------------------------
+    // Your exact old highlighting logic follows
+    // -----------------------------------------
+
+    if (!LastActor.GetObject())
+    {
+        if (ThisActor.GetObject())
         {
             ThisActor->HighlightActor();
         }
     }
     else
     {
-        if (!ThisActor)
+        if (!ThisActor.GetObject())
         {
             LastActor->UnHighlightActor();
         }
         else
         {
-            if (LastActor != ThisActor)
+            if (LastActor.GetObject() != ThisActor.GetObject())
             {
                 LastActor->UnHighlightActor();
                 ThisActor->HighlightActor();
             }
         }
     }
-    
 }
 
 void AAuraPlayerController::BeginPlay()
@@ -57,8 +73,10 @@ void AAuraPlayerController::BeginPlay()
     check(AuraContext);
     
     UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
-    check(Subsystem);
-    Subsystem->AddMappingContext(AuraContext, 0);
+    if(Subsystem)
+    {
+        Subsystem->AddMappingContext(AuraContext, 0);
+    }
 
     bShowMouseCursor = true;
     DefaultMouseCursor = EMouseCursor::Default;
