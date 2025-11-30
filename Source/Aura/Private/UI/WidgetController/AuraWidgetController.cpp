@@ -9,8 +9,13 @@ void UAuraWidgetController::SetWidgetControllerParams(const FWidgetControllerPar
     PlayerState = WCParams.PlayerState;
     AbilitySystemComponent = WCParams.AbilitySystemComponent;
     AttributeSet = WCParams.AttributeSet;
+
 }
 void UAuraWidgetController::BroadcastInitialValues()
+{
+    // Intended to be overridden in subclasses
+}
+void UAuraWidgetController::BindCallbacksToDependencies()
 {
     // Intended to be overridden in subclasses
 }
