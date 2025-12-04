@@ -40,37 +40,46 @@ void AAuraEffectActor::ApplyEffectsToTarget(AActor *TargetActor, TSubclassOf<UGa
 
 }
 
-void AAuraEffectActor::OnOverlap(AActor* TargetActor)
+void AAuraEffectActor::ApplyMultipleEffectsToTarget(AActor* TargetActor, const TArray<TSubclassOf<UGameplayEffect>>& EffectClasses)
+{
+	for (const TSubclassOf<UGameplayEffect>& EffectClass : EffectClasses)
+	{
+		if (!EffectClass) continue;
+		ApplyEffectsToTarget(TargetActor, EffectClass);
+	}
+}
+
+void AAuraEffectActor::ApplyEffectsTo(AActor* TargetActor)
 {
 	if (InstantEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
 	{
-		ApplyEffectsToTarget(TargetActor, InstantGameplayEffectClass);
+		ApplyMultipleEffectsToTarget(TargetActor, InstantGameplayEffects);
 	}
 
 	if (DurationEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
 	{
-		ApplyEffectsToTarget(TargetActor, DurationGameplayEffectClass);
+		ApplyMultipleEffectsToTarget(TargetActor, DurationGameplayEffects);
 	}
 	if (InfiniteEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnOverlap)
 	{
-		ApplyEffectsToTarget(TargetActor, InfiniteGameplayEffectClass);
+		ApplyMultipleEffectsToTarget(TargetActor, InfiniteGameplayEffects);
 	}
 }
 
-void AAuraEffectActor::OnEndOverlap(AActor* TargetActor)
+void AAuraEffectActor::RemoveEffectsFrom(AActor* TargetActor)
 {
 	if (InstantEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnEndOverlap)
 	{
-		ApplyEffectsToTarget(TargetActor, InstantGameplayEffectClass);
+		ApplyMultipleEffectsToTarget(TargetActor, InstantGameplayEffects);
 	}
 
 	if (DurationEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnEndOverlap)
 	{
-		ApplyEffectsToTarget(TargetActor, DurationGameplayEffectClass);
+		ApplyMultipleEffectsToTarget(TargetActor, DurationGameplayEffects);
 	}
 	if (InfiniteEffectApplicationPolicy == EEffectApplicationPolicy::ApplyOnEndOverlap)
 	{
-		ApplyEffectsToTarget(TargetActor, InfiniteGameplayEffectClass);
+		ApplyMultipleEffectsToTarget(TargetActor, InfiniteGameplayEffects);
 	}
 	if (InfiniteEffectRemovalPolicy == EEffectRemovalPolicy::RemoveOnEndOverlap)
 	{
