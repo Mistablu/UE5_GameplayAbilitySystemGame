@@ -114,94 +114,71 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
 }
 // Vital Attributes
 void UAuraAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Health, OldHealth);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Health, OldHealth);}
+
 void UAuraAttributeSet::OnRep_Mana(const FGameplayAttributeData& OldMana) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Mana, OldMana);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Mana, OldMana);}
+
 
 // Secondary Attributes
 void UAuraAttributeSet::OnRep_MagicResist(const FGameplayAttributeData& OldMagicResist) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MagicResist, OldMagicResist);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MagicResist, OldMagicResist);}
+
 void UAuraAttributeSet::OnRep_MaxHealth(const FGameplayAttributeData& OldMaxHealth) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MaxHealth, OldMaxHealth);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MaxHealth, OldMaxHealth);}
+
 void UAuraAttributeSet::OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MaxMana, OldMaxMana);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MaxMana, OldMaxMana);}
+
 void UAuraAttributeSet::OnRep_Armour(const FGameplayAttributeData& OldArmour) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Armour, OldArmour);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Armour, OldArmour);}
+
 void UAuraAttributeSet::OnRep_PhysicalResist(const FGameplayAttributeData& OldPhysicalResist) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, PhysicalResist, OldPhysicalResist);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, PhysicalResist, OldPhysicalResist);}
+
 void UAuraAttributeSet::OnRep_PhysicalDamage(const FGameplayAttributeData& OldPhysicalDamage) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, PhysicalDamage, OldPhysicalDamage);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, PhysicalDamage, OldPhysicalDamage);}
+
 void UAuraAttributeSet::OnRep_MagicDamage(const FGameplayAttributeData& OldMagicDamage) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MagicDamage, OldMagicDamage);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, MagicDamage, OldMagicDamage);}
+
 void UAuraAttributeSet::OnRep_CriticalHitChance(const FGameplayAttributeData& OldCriticalHitChance) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, CriticalHitChance, OldCriticalHitChance);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, CriticalHitChance, OldCriticalHitChance);}
+
 void UAuraAttributeSet::OnRep_CriticalHitDamage(const FGameplayAttributeData& OldCriticalHitDamage) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, CriticalHitDamage, OldCriticalHitDamage);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, CriticalHitDamage, OldCriticalHitDamage);}
+
 void UAuraAttributeSet::OnRep_CriticalHitResistance(const FGameplayAttributeData& OldCriticalHitResistance) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, CriticalHitResistance, OldCriticalHitResistance);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, CriticalHitResistance, OldCriticalHitResistance);}
+
 void UAuraAttributeSet::OnRep_HealthRegeneration(const FGameplayAttributeData& OldHealthRegeneration) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, HealthRegeneration, OldHealthRegeneration);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, HealthRegeneration, OldHealthRegeneration);}
+
 void UAuraAttributeSet::OnRep_StatusResistance(const FGameplayAttributeData& OldStatusResistance) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, StatusResistance, OldStatusResistance);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, StatusResistance, OldStatusResistance);}
+
 void UAuraAttributeSet::OnRep_Stamina(const FGameplayAttributeData& OldStamina) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Stamina, OldStamina);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Stamina, OldStamina);}
+
 void UAuraAttributeSet::OnRep_ManaRegeneration(const FGameplayAttributeData& OldManaRegeneration) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, ManaRegeneration, OldManaRegeneration);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, ManaRegeneration, OldManaRegeneration);}
+
 void UAuraAttributeSet::OnRep_BlockChance(const FGameplayAttributeData& OldBlockChance) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, BlockChance, OldBlockChance);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, BlockChance, OldBlockChance);}
+
 void UAuraAttributeSet::OnRep_ArmourPenetration(const FGameplayAttributeData& OldArmourPenetration) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, ArmourPenetration, OldArmourPenetration);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, ArmourPenetration, OldArmourPenetration);}
+
 
 // Primary Attributes
 void UAuraAttributeSet::OnRep_Strength(const FGameplayAttributeData& OldStrength) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Strength, OldStrength);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Strength, OldStrength);}
+
 void UAuraAttributeSet::OnRep_Intelligence(const FGameplayAttributeData& OldIntelligence) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Intelligence, OldIntelligence);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Intelligence, OldIntelligence);}
+
 void UAuraAttributeSet::OnRep_Resilience(const FGameplayAttributeData& OldResilience) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Resilience, OldResilience);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Resilience, OldResilience);}
+
 void UAuraAttributeSet::OnRep_Vitality(const FGameplayAttributeData& OldVitality) const
-{
-    GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Vitality, OldVitality);
-}
+{GAMEPLAYATTRIBUTE_REPNOTIFY(UAuraAttributeSet, Vitality, OldVitality);}
