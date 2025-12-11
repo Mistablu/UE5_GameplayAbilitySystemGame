@@ -20,3 +20,12 @@ void UAuraAbilitySystemComponent::EffectApplied(UAbilitySystemComponent* Ability
         
     }
 }
+
+void UAuraAbilitySystemComponent::AddCharacterAbilities(const TArray<TSubclassOf<UGameplayAbility>>& StartupAbilities)
+{
+    for (TSubclassOf<UGameplayAbility> AbilityClass : StartupAbilities)
+    {
+        const FGameplayAbilitySpec AbilitySpec = FGameplayAbilitySpec(AbilityClass, 1);
+        GiveAbility(AbilitySpec);
+    }
+}
