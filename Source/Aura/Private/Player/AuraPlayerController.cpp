@@ -49,16 +49,9 @@ void AAuraPlayerController::CursorTrace()
     GetHitResultUnderCursor(ECC_Visibility, false, CursorHit);
     if (!CursorHit.bBlockingHit) return;
 
-    AActor* HitActor = CursorHit.GetActor();
-
-    // Store the previous value
     LastActor = ThisActor;
+    ThisActor = Cast<IEnemyInterface>(CursorHit.GetActor());
 
-    // Clear the new value first
-    ThisActor.SetObject(nullptr);
-    ThisActor.SetInterface(nullptr);
-
-    // Assign only if it implements the interface
     if (LastActor != ThisActor)
     {
         if (LastActor) LastActor->UnHighlightActor();
