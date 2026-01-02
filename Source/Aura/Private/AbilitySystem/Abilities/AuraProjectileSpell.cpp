@@ -36,7 +36,7 @@ void UAuraProjectileSpell::SpawnProjectile(const FVector& ProjectileTargetLocati
             ProjectileClass, 
             SpawnTransform, 
             GetOwningActorFromActorInfo(), 
-            Cast<APawn>(GetAvatarActorFromActorInfo()), 
+            Cast<APawn>(GetOwningActorFromActorInfo()), 
             ESpawnActorCollisionHandlingMethod::AlwaysSpawn);
 
         Projectile->FinishSpawning(SpawnTransform);

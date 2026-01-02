@@ -22,14 +22,14 @@ void UTargetDataUnderMouse::Activate()
     {
         const FGameplayAbilitySpecHandle SpecHandle = GetAbilitySpecHandle();
         const FPredictionKey ActivationPredictionKey = GetActivationPredictionKey();
-        AbilitySystemComponent.Get()->AbilityTargetDataSetDelegate(GetAbilitySpecHandle(), ActivationPredictionKey).AddUObject(this, &UTargetDataUnderMouse::OnTargetDataReplicatedCallback);
+        AbilitySystemComponent.Get()->AbilityTargetDataSetDelegate(SpecHandle, ActivationPredictionKey).AddUObject(this, &UTargetDataUnderMouse::OnTargetDataReplicatedCallback);
         const bool bCalledDelegate = AbilitySystemComponent.Get()->CallReplicatedTargetDataDelegatesIfSet(SpecHandle, ActivationPredictionKey);
         if (!bCalledDelegate)
         {
             SetWaitingOnRemotePlayerData();
         }
     }
-    
+      
 }
 void UTargetDataUnderMouse::SendMouseCursorData()
 {
