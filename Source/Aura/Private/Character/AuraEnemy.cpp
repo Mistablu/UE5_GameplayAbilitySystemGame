@@ -3,6 +3,7 @@
 
 #include "Character/AuraEnemy.h"
 #include "AbilitySystem/AuraAbilitySystemComponent.h"
+#include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "AbilitySystem/AuraAttributeSet.h"
 #include "Components/WidgetComponent.h"
 #include "UI/Widget/AuraUserWidget.h"
@@ -71,10 +72,7 @@ void AAuraEnemy::BeginPlay()
     OnHealthChanged.Broadcast(AuraAS->GetHealth());
     OnMaxHealthChanged.Broadcast(AuraAS->GetMaxHealth());
     }
-
-    
-
-    
+ 
 }
 
 void AAuraEnemy::InitAbilityActorInfo()
@@ -82,4 +80,9 @@ void AAuraEnemy::InitAbilityActorInfo()
     AbilitySystemComponent->InitAbilityActorInfo(this, this);
     Cast<UAuraAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
     InitialiseDefaultAttributes();
+}
+
+void AAuraEnemy::InitialiseDefaultAttributes() const
+{
+    UAuraAbilitySystemLibrary::InitialiseDefaultAttributes(this, CharacterClass, Level, AbilitySystemComponent);
 }
