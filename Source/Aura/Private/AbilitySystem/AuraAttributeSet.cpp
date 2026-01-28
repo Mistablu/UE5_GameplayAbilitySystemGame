@@ -134,6 +134,24 @@ void UAuraAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallba
     {
         SetMana(FMath::Clamp(GetMana(), 0.f, GetMaxMana()));
     }
+    if (Data.EvaluatedData.Attribute == GetIncomingDamageAttribute())
+    {
+        const float LocalIncomingDamage = GetIncomingDamage();
+        SetIncomingDamage(0);
+        if (LocalIncomingDamage > 0)
+        {
+            const float NewHealth = GetHealth() - LocalIncomingDamage;
+            SetHealth(FMath::Clamp(NewHealth, 0, GetMaxHealth()));
+            const bool bFatal = NewHealth <=0;
+
+            if (!bFatal)
+            {
+                FGameplayTagContainer TagContainer;
+                TagContainer.AddTag(FAuraGameplayTags::Get().Effects_HitReact);
+                Props.TargetASC->TryActivateAbilitiesByTag(TagContainer);
+            }
+        }
+    }
 }
 // Vital Attributes
 void UAuraAttributeSet::OnRep_Health(const FGameplayAttributeData& OldHealth) const
