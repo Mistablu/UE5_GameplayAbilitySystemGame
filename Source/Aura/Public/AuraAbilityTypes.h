@@ -20,9 +20,9 @@ public:
         return StaticStruct();
     }
 
-    virtual FAuraGameplayEffectContext Duplicate() const
+    virtual FAuraGameplayEffectContext* Duplicate() const
     {
-        FAuraGameplayEffectContext NewContext = new FAuraGameplayEffectContext();
+        FAuraGameplayEffectContext* NewContext = new FAuraGameplayEffectContext();
         *NewContext = *this;
         if (GetHitResult())
         {

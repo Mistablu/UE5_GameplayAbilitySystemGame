@@ -7,6 +7,7 @@
 #include "Interaction/CombatInterface.h"
 #include "AbilitySystem/AuraAbilitySystemLibrary.h"
 #include "AbilitySystem/ExecCalc/ExecCalc_Damage.h"
+#include "AuraAbilityTypes.h"
 
 struct AuraDamageStatics
 {
@@ -63,14 +64,16 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
 
     //Get Damage Set by Caller Magnitude
     float Damage = Spec.GetSetByCallerMagnitude(FAuraGameplayTags::Get().Damage);
-
-    //Determine Block chance
     float TargetBlockChance = 0.f;
     ExecutionParams.AttemptCalculateCapturedAttributeMagnitude(DamageStatics().BlockChanceDef, EvaluationParameters, TargetBlockChance);
     TargetBlockChance = FMath::Max<float>(TargetBlockChance, 0);
 
     //Halve damage on block
     const bool bBlocked = FMath::RandRange(1, 100) < TargetBlockChance;
+
+    FGameplayEffectContextHandle EffectContextHandle = Spec.GetContext();
+    UAuraAbilitySystemLibrary::SetIsBlockedHit(EffectContextHandle, bBlocked);
+
     Damage = bBlocked ? Damage / 2 : Damage;
 
     //Determine Armour
@@ -105,6 +108,7 @@ void UExecCalc_Damage::Execute_Implementation(const FGameplayEffectCustomExecuti
     Damage *= (100 - EffectiveArmour * EffectiveArmourCoefficient) / 100;
 
     const bool bCriticalHit = FMath::RandRange(1, 100) < (SourceCriticalHitChance - TargetCriticalHitResistance);
+    UAuraAbilitySystemLibrary::SetIsCriticalHit(EffectContextHandle, bCriticalHit);
     Damage = bCriticalHit ? Damage * (1 + SourceCriticalHitDamage / 100) : Damage;
 
     const FGameplayModifierEvaluatedData EvaluatedData(UAuraAttributeSet::GetIncomingDamageAttribute(), EGameplayModOp::Additive, Damage);
