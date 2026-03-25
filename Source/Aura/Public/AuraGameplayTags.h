@@ -37,6 +37,11 @@ public:
 	FGameplayTag Attributes_Secondary_Stamina;
 	FGameplayTag Attributes_Secondary_StatusResistance;
 
+	FGameplayTag Attributes_Resistance_Fire;
+	FGameplayTag Attributes_Resistance_Lightning;
+	FGameplayTag Attributes_Resistance_Physical;
+	FGameplayTag Attributes_Resistance_Magical;
+
 	FGameplayTag Attributes_Vital_Health;
 	FGameplayTag Attributes_Vital_Mana;
 
@@ -49,8 +54,11 @@ public:
 
 	FGameplayTag Damage;
 	FGameplayTag Damage_Fire;
-
-	TArray<FGameplayTag> DamageTypes;
+	FGameplayTag Damage_Lightning;
+	FGameplayTag Damage_Physical;
+	FGameplayTag Damage_Magical;
+	
+	TMap<FGameplayTag, FGameplayTag> DamageTypesToResistances;
 	FGameplayTag Effects_HitReact;
 
 protected:

@@ -87,18 +87,12 @@ public:
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Armour, Category = "Secondary Attributes")
 	FGameplayAttributeData Armour;
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Armour);
-	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MagicResist, Category = "Secondary Attributes")
-	FGameplayAttributeData MagicResist;
-	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, MagicResist);
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_PhysicalDamage, Category = "Secondary Attributes")
 	FGameplayAttributeData PhysicalDamage;
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, PhysicalDamage);
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MagicDamage, Category = "Secondary Attributes")
 	FGameplayAttributeData MagicDamage;
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, MagicDamage);
-	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_PhysicalResist, Category = "Secondary Attributes")
-	FGameplayAttributeData PhysicalResist;
-	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, PhysicalResist);
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_CriticalHitChance, Category = "Secondary Attributes")
 	FGameplayAttributeData CriticalHitChance;
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, CriticalHitChance);
@@ -144,6 +138,22 @@ public:
 	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, Mana);
 
 	/**
+	 * Resistance Attributes
+	 */
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_FireResistance, Category = "Resistance Attributes")
+	FGameplayAttributeData FireResistance;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, FireResistance);
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_LightningResistance, Category = "Resistance Attributes")
+	FGameplayAttributeData LightningResistance;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, LightningResistance);
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_PhysicalResistance, Category = "Resistance Attributes")
+	FGameplayAttributeData PhysicalResistance;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, PhysicalResistance);
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_MagicalResistance, Category = "Resistance Attributes")
+	FGameplayAttributeData MagicalResistance;
+	ATTRIBUTE_ACCESSORS(UAuraAttributeSet, MagicalResistance);
+
+	/**
 	 * Meta Attributes
 	 */
 	UPROPERTY(BlueprintReadOnly, Category= "Meta Attributes")
@@ -170,11 +180,7 @@ public:
 	
 	//Secondary Attributes
 	UFUNCTION()
-	void OnRep_MagicResist(const FGameplayAttributeData& OldMagicResist) const;
-	UFUNCTION()
 	void OnRep_Armour(const FGameplayAttributeData& OldArmour) const;
-	UFUNCTION()
-	void OnRep_PhysicalResist(const FGameplayAttributeData& OldPhysicalResist) const;
 	UFUNCTION()
 	void OnRep_PhysicalDamage(const FGameplayAttributeData& OldPhysicalDamage) const;
 	UFUNCTION()
@@ -201,6 +207,16 @@ public:
 	void OnRep_MaxHealth(const FGameplayAttributeData& OldMaxHealth) const;
 	UFUNCTION()
 	void OnRep_MaxMana(const FGameplayAttributeData& OldMaxMana) const;
+
+	// Resistance Attributes
+	UFUNCTION()
+	void OnRep_FireResistance(const FGameplayAttributeData& OldFireResistance) const;
+	UFUNCTION()
+	void OnRep_LightningResistance(const FGameplayAttributeData& OldLightningResistance) const;
+	UFUNCTION()
+	void OnRep_PhysicalResistance(const FGameplayAttributeData& OldPhysicalResistance) const;
+	UFUNCTION()
+	void OnRep_MagicalResistance(const FGameplayAttributeData& OldMagicalResistance) const;
 
 private:
 	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const;
