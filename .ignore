@@ -1,5 +1,7 @@
 /.git
 /.vscode
 /Content
+/Data
+/DerivedDataCache
 /Intermediate
 /Saved
